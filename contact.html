@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cookies & Bytes</title>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <style>
+        body {
+            background-color: #efe6e0;
+        }
+        .banner {
+            display: block;
+            padding-top: 50px;
+            background-color: #a87363;
+            text-align: center;
+            height: 100px;
+        }
+        h2 {
+            margin: 0 auto;
+            max-width: 400px;
+            display: block;
+            font-size: 30px;
+            color: #efe6e0;
+        }
+        form {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+        form h4 {
+            text-align: center;
+            font-size: 24px;
+            color: #7b5946;
+        }
+		#error {
+            color: #ff0000;
+            padding: 20px;
+        }
+		label {
+            width: 140px; 
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 18px;
+            color: #7b5946;
+        }
+		input, select, textarea {
+            margin-bottom: 12px;
+            padding: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1px solid #b6b6b6;
+            width: 300px;
+            color: #5b5b5b;
+        }
+        textarea {
+            width: 300px;
+            height: 140px;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 30px;
+            margin-left: 160px;
+            text-align: center;
+            padding: 20px 0px;
+            background-color: #A87363;
+            color: #efe6e0;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #caa296;
+            color: #7b5946;
+        }
+    </style>
+    <script>
+        function validate() {
+            reqFields = ["fname", "lname", "email", "queryType"];
+            reqNames = ["First Name", "Last Name", "Email", "Type of Query"];
+            let err = "";
+            for (let i = 0; i < reqFields.length; i++) {
+                if (document.getElementById(reqFields[i]).value == "") {
+                    err += reqNames[i] + " is required<br/>";
+                }
+            }
+            if (err != "") {
+                document.getElementById('error').innerHTML =
+                    "Fix the following errors to continue:<br>" + err;
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <!-- <nav>
+	    <ul class="nav-bar" >
+            <li class="nav"><a href="index.html">Home</a></li>
+			<li class="nav"><a href="#">About</a></li>
+            <li class="nav"><a href="#">Cookies</a></li>
+			<li class="nav"><a href="#">Contact</a></li>
+            <li class="nav"><a href="#">FAQs</a></li>
+		</ul>
+	</nav> -->
+
+    <div class="banner">
+        <h2>We'd love to hear from you!</h2>
+    </div>
+    <form onSubmit="return validate()" method="get" action="#"> <!-- action should be? -->
+        <h4>Get in touch with us </h4>
+        <label>First Name* </label><input type='text' name='first' id="fname" /><br />
+        <label>Last Name* </label><input type='text' name='last' id="lname" /><br />
+        <label>Email* </label><input type='text' name='email' id="email" /><br />
+        <label>Phone Number </label><input type='text' name='phone' id="phone" /><br />
+        <label>Type of Query</label>
+        <select name="query" id="queryType">
+            <option value=""></option>
+            <option value="donation">Donation/Fundraising</option>
+            <option value="opportunities">Volunteer Opportunities</option>
+            <option value="programs">Programs</option>
+            <option value="collab">Partnerships/Collaborations</option>
+            <option value="feedback">Feedback/Suggestions</option>
+            <option value="technical">Technical Issues</option>
+            <option value="other">Other</option>
+        </select><br />
+        <label>Message </label><br/>
+        <label></label><textarea></textarea><br />
+        <input type="submit" value="Send Message"/>
+        <div id="error">&nbsp;</div>
+    </form>
+  
+    <!-- <footer>
+        
+    </footer> -->
+</body>
+</html>
