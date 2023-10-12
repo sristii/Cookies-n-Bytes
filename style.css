@@ -1,0 +1,120 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+a {
+    text-decoration: none;
+}
+#catalog-backdrop {
+    display: block;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 800px;
+    background-image: url('backgroundCatalog.jpg');
+    background-size: cover;
+}
+.banner-text {
+    display: center;
+    margin-left: 13%;
+    padding: 40px;
+    margin-top: 200px;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    background-color: #a87363;
+    box-sizing: border-box;
+    border: 4px dotted #efe6e0;
+    border-radius: 14px;
+    width: 75%;
+    color: rgb(255, 255,255);
+    font-size: 45px;
+}
+.banner-text h1 {
+    line-height: 1.4em;
+    color: #efe6e0;
+    font-size: 26px;
+}
+
+.preview {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 14px;
+    background-color: #efe6e0;
+    color: #7b5946;
+    width: 90%;
+    height: max-content;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 100px;
+    padding: 30px;
+}
+.preview-row {
+    margin: 50px 0px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 4px dotted #7b5946;
+}
+.preview-text {
+    width: 100%;
+    max-width: 600px;
+}
+.preview-text h3 {
+    font-size: 28px;
+}
+.preview-text p {
+    font-size: 20px;
+    line-height: 1.7em;
+}
+.img-placeholder {
+    background-color: bisque;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+}
+.cookie-button {
+    font-size: 70px;
+}
+.cookie-button:hover {
+    opacity: 0.6;
+}
+
+.donate-text {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+    text-align: center;
+    width: 80%;
+    background-color: #dab9b2;
+    box-sizing: border-box;
+    border-radius: 14px;
+}
+.donate-text p {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    color: #7b5946;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    line-height: 1.6em;
+    font-size: 18px;
+}
+.donate-button {
+    display: inline-block;
+    background-color: #A87363;
+    color: #efe6e0;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 20px;
+    border-radius: 10px;
+}
+.donate-button:hover {
+    background-color: #caa296;
+    color: #7b5946;
+}
