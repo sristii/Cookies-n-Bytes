@@ -3,24 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Cookies & Bytes</title>
+    <title>Contact Us</title>
     <link href="styles.css" rel="stylesheet" type="text/css"/>
-    <style>
+    <style type="text/css">
         body {
             background-color: #efe6e0;
         }
         .banner {
             display: block;
-            padding-top: 50px;
             background-color: #a87363;
-            text-align: center;
-            height: 100px;
+            padding: 140px 0px 90px 0px;
         }
         h2 {
-            margin: 0 auto;
-            max-width: 400px;
             display: block;
-            font-size: 30px;
+            margin: 0 auto;
+            width: 80%;
+            font-size: 34px;
+            text-align: center;
             color: #efe6e0;
         }
         form {
@@ -37,7 +36,9 @@
         }
 		#error {
             color: #ff0000;
-            padding: 20px;
+            padding: 0px 40px;
+            text-align: center;
+            line-height: 1.4em;
         }
 		label {
             width: 140px; 
@@ -77,20 +78,68 @@
             background-color: #caa296;
             color: #7b5946;
         }
+
+        input[type="checkbox"] {
+            width: fit-content;
+            height: fit-content;
+        }
+        .chkbox-label {
+            color: #5b5b5b;
+            margin-left: 10px;
+        }
+        .chkboxes-container {
+            display: block;
+            margin-left: 160px;
+        }
     </style>
     <script>
+        /*
+        If no phone number provided at all, nothing to validate. 
+        but if provided, ensure it is in one of the following formats: 
+        XXXXXXXXXX
+        XXX-XXX-XXXX
+        XXX.XXX.XXXX
+        XXX XXX XXXX
+        */
+        function validatePhone() {
+            const phone = document.getElementById("phone").value;
+            if (phone == "") {
+                return true;
+            } else {
+                return phone.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+            }
+        }
+
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            console.log(email);
+            return email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
+        }
+
         function validate() {
-            reqFields = ["fname", "lname", "email", "queryType"];
-            reqNames = ["First Name", "Last Name", "Email", "Type of Query"];
+            reqFields = {
+                fname: "First Name",
+                lname: "Last Name",
+                email: "Email",
+                message: "Message",
+            };
             let err = "";
-            for (let i = 0; i < reqFields.length; i++) {
-                if (document.getElementById(reqFields[i]).value == "") {
-                    err += reqNames[i] + " is required<br/>";
+            for (const id in reqFields) {
+                if (document.getElementById(id).value == "") {
+                    err += reqFields[id] + " is required.<br />";
                 }
             }
+
+            if (!validatePhone()) {
+                err += "Invalid phone number.<br />";
+            }
+            if (!validateEmail()) {
+                err += "Email format does not match <em>username@domain.tld</em><br />";
+            }
+
             if (err != "") {
                 document.getElementById('error').innerHTML =
-                    "Fix the following errors to continue:<br>" + err;
+                    "Fix the following errors to continue:<br><br>" + err;
                 return false;
             }
 
@@ -99,15 +148,25 @@
     </script>
 </head>
 <body>
-    <!-- <nav>
-	    <ul class="nav-bar" >
-            <li class="nav"><a href="index.html">Home</a></li>
-			<li class="nav"><a href="#">About</a></li>
-            <li class="nav"><a href="#">Cookies</a></li>
-			<li class="nav"><a href="#">Contact</a></li>
-            <li class="nav"><a href="#">FAQs</a></li>
+    <nav>
+        <span class="logo">LOGO</span>
+	    <ul>
+            <li><a href="index.html">Home</a></li>
+			<li>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-btn">About</a>
+                    <div class="dropdown-links">
+                        <a href="#">Our Mission</a>
+                        <a href="#">Our Impact</a>
+                        <a href="#">Our Team</a>
+                    </div>
+                </div> 
+            </li>
+            <li><a href="#">Cookies</a></li>
+			<li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQs</a></li>
 		</ul>
-	</nav> -->
+	</nav>
 
     <div class="banner">
         <h2>We'd love to hear from you!</h2>
@@ -118,6 +177,13 @@
         <label>Last Name* </label><input type='text' name='last' id="lname" /><br />
         <label>Email* </label><input type='text' name='email' id="email" /><br />
         <label>Phone Number </label><input type='text' name='phone' id="phone" /><br />
+        <label>Role </label>
+        <div class="chkboxes-container">
+            <input type="checkbox" name="chkCustomer" value="customer" id="check-customer"><label for="check-customer" class="chkbox-label"> Customer</label><br />
+            <input type="checkbox" name="chkOrg" value="org" id="check-org"><label for="check-org" class="chkbox-label">  Organization</label><br />
+            <input type="checkbox" name="chkSponsor" value="sponsor" id="check-sponsor"><label for="check-sponsor" class="chkbox-label"> Sponsor</label><br />
+            <input type="checkbox" name="chkOther" value="other" id="check-other"><label for="check-other" class="chkbox-label"> Other</label><br />
+        </div><br />
         <label>Type of Query</label>
         <select name="query" id="queryType">
             <option value=""></option>
@@ -125,12 +191,12 @@
             <option value="opportunities">Volunteer Opportunities</option>
             <option value="programs">Programs</option>
             <option value="collab">Partnerships/Collaborations</option>
-            <option value="feedback">Feedback/Suggestions</option>
+            <option value="feedback">Product Feedback</option>
             <option value="technical">Technical Issues</option>
             <option value="other">Other</option>
         </select><br />
-        <label>Message </label><br/>
-        <label></label><textarea></textarea><br />
+        <label>Message* </label><br/>
+        <label></label><textarea id="message"></textarea><br />
         <input type="submit" value="Send Message"/>
         <div id="error">&nbsp;</div>
     </form>
