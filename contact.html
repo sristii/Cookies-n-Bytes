@@ -11,8 +11,20 @@
         }
         .banner {
             display: block;
-            background-color: #a87363;
-            padding: 140px 0px 90px 0px;
+            height: 300px;
+            background-image: url(backdrop2.jpeg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            overflow: hidden;
+        }
+        #banner-overlay {
+            margin: 0 auto;
+            background-color: #a873638c;
+            /* opacity: 30%; */
+            
+            height: 200px;
+            padding-top: 140px;
         }
         h2 {
             display: block;
@@ -35,8 +47,8 @@
             color: #7b5946;
         }
 		#error {
-            color: #ff0000;
-            padding: 0px 40px;
+            color: #b14444;
+            padding: 0px 0px 80px 0px;
             text-align: center;
             line-height: 1.4em;
         }
@@ -69,8 +81,9 @@
             padding: 20px 0px;
             background-color: #A87363;
             color: #efe6e0;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
+            font-family: 'Averia Serif Libre', serif;;
             border-radius: 10px;
         }
         
@@ -149,7 +162,7 @@
 </head>
 <body>
     <nav>
-        <span class="logo">LOGO</span>
+        <a href="index.html" class="logo"></a>
 	    <ul>
             <li><a href="index.html">Home</a></li>
 			<li>
@@ -169,7 +182,7 @@
 	</nav>
 
     <div class="banner">
-        <h2>We'd love to hear from you!</h2>
+        <div id="banner-overlay"><h2>We'd love to hear from you!</h2></div>
     </div>
     <form onSubmit="return validate()" method="get" action="#"> <!-- action should be? -->
         <h4>Get in touch with us </h4>
