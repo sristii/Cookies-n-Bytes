@@ -11,7 +11,7 @@
         }
         .banner {
             display: block;
-            height: 300px;
+            height: 290px;
             background-image: url(backdrop2.jpeg);
             background-repeat: no-repeat;
             background-size: 100%;
@@ -21,8 +21,6 @@
         #banner-overlay {
             margin: 0 auto;
             background-color: #a873638c;
-            /* opacity: 30%; */
-            
             height: 200px;
             padding-top: 140px;
         }
@@ -68,6 +66,7 @@
             border: 1px solid #b6b6b6;
             width: 300px;
             color: #5b5b5b;
+            font-family: 'Averia Serif Libre', serif;
         }
         textarea {
             width: 300px;
@@ -85,13 +84,11 @@
             font-weight: 600;
             font-family: 'Averia Serif Libre', serif;;
             border-radius: 10px;
-        }
-        
+        }        
         input[type="submit"]:hover {
             background-color: #caa296;
             color: #7b5946;
         }
-
         input[type="checkbox"] {
             width: fit-content;
             height: fit-content;
@@ -103,6 +100,16 @@
         .chkboxes-container {
             display: block;
             margin-left: 160px;
+        }
+        /* RESPONSIVE DESIGN - mobile */
+        @media screen and (max-width: 500px) {
+            input, select, textarea {
+                width: 240px;
+            }
+            h2 {
+                font-size: 30px;
+                width: 70%;
+            }
         }
     </style>
     <script>

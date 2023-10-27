@@ -12,17 +12,21 @@
             font-size: 40px;
             color: #7b5946;
         }
-        .redirect {
+        /* 
+         * styling for section before footer where users can navigate 
+         * to Contact page if their questions were not answers 
+         */
+        .link-contact {
             display: block;
             text-align: center;
             background-color: #f2e9de;
             padding: 30px;
             font-size: 20px;
         }
-        .redirect p {
+        .link-contact p {
             color: #7b5946;
         }
-        .redirect a {
+        .link-contact a {
             color: #efe6e0;
             display: inline-block;
             background-color: #A87363;
@@ -34,7 +38,7 @@
             font-weight: 800;
             width: 160px;
         }
-        .redirect a:hover {
+        .link-contact a:hover {
             background-color: #caa296;
             color: #7b5946;
         }
@@ -44,8 +48,10 @@
         }
         #faq-list {
             list-style-type: none;
+            padding-left: 0px;
         }
-        .question {
+        /* question styling */
+        #faq-list li .question {
             font-size: 22px;
             color: #7b5946;
             cursor: pointer;
@@ -54,28 +60,48 @@
             border-bottom: 2px solid #dab9b2;
             transition: 0.4s;
         }
-        .active, .question:hover {
-            background-color: #dab9b2;
-        }
-
+        /* answer styling */
         #faq-list li p {
             padding: 0px 20px 20px 20px;
             background-color: white;
             display: none;
             overflow: hidden;
             font-size: 18px;
-            line-height: 1.7em
+            line-height: 1.7em;
+            color: #7b5946;
         }
-
-        .question:after {
-            content: "\02795";
+        b:before {
+            content: "🍪 ";
+            line-height: inherit;
+        }
+        .inline-link {
+            color: inherit;
+            background-color: #f2e9de;
+        }
+        .inline-link:hover {
+            background-color: #A87363;
+            color: #f2e9de;
+        }
+        /* styling for hovering over and clicking on a question */
+        .active, .question:hover {
+            background-color: #dab9b2;
+        }
+        .plus-minus {
             font-size: 18px;
             color: #7b5946; /* color doesn't work */
             float: right;
             margin-left: 5px;
         }
-        .active:after {
-            content: "\2796";
+        /* RESPONSIVE DESIGN */
+        @media screen and (max-width: 1200px) {
+            .faqs-container {
+                width: 80%;
+            }
+        }
+        @media screen and (max-width: 1040px) {
+            .faqs-container {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -105,7 +131,7 @@
         <ul id="faq-list"></ul>
     </div>
 
-    <div class="redirect">
+    <div class="link-contact">
         <p>Questions not answered?</p>
         <a href="contact.html">Contact Us ></a>
     </div>
@@ -118,13 +144,12 @@
         
         // fundraising strategies
         const strategies = [
-            "Custom Cookie Sales: Selling custom cookies at events, conferences, and community gatherings.",
-            "Corporate Partnerships: Collaborating with businesses for custom cookie sales at events, with proceeds supporting STEM education.",
-            "Online Charity Auctions: Hosting auctions for exclusive, themed cookie sets, with proceeds dedicated to STEM education.",
-            "Custom Cookie Gift Cards: Offering gift cards for custom cookies, with a portion of sales contributing to STEM education."
+            "<b>Custom Cookie Sales:</b> Selling custom cookies at events, conferences, and community gatherings.",
+            "<b>Corporate Partnerships:</b> Collaborating with businesses for custom cookie sales at events, with proceeds supporting STEM education.",
+            "<b>Online Charity Auctions:</b> Hosting auctions for exclusive, themed cookie sets, with proceeds dedicated to STEM education.",
+            "<b>Custom Cookie Gift Cards:</b> Offering gift cards for custom cookies, with a portion of sales contributing to STEM education."
         ];
-        const strategiesList = "<ul><li>" + strategies.join("</li><li>") + "</li></ul>";
-
+        
         const content = [
             {
                 q: "What is the purpose of this organization?",
@@ -140,11 +165,11 @@
             },
             {
                 q: "What are the organization's fundraising strategies?",
-                a: "Great question! We use a variety of fundraising methods including:" + strategiesList
+                a: "Great question! We use a variety of fundraising methods including:<br /><br />" + strategies.join("<br />")
             },
             {
                 q: "How can I purchase cookies?",
-                a: "Custom cookies can be ordered through our website or at specified events and gatherings. To reserve an order right now, visit our <a href='#'>Cookie Catalogue</a>."
+                a: "Custom cookies can be ordered through our website or at specified events and gatherings. To reserve an order right now, visit our <a href='#' class='inline-link'>Cookie Catalogue</a>."
             },
             {
                 q: "Can I request specific designs or themes for custom cookies?",
@@ -152,7 +177,7 @@
             },
             {
                 q: "How can I support your cause?",
-                a: "We welcome volunteers to assist us during our events and cookie sales. Please <a href='contact.html'>contact</a> us to learn more and sign up. Another way to support us is to make a donation directly through our website. Additionally, we would love for you to spread the word about our mission on social media and encourage others to get involved."
+                a: "We welcome volunteers to assist us during our events and cookie sales. Please <a href='contact.html' class='inline-link'>contact us</a> to learn more and sign up. Another way to support us is to make a donation directly through our website. Additionally, we would love for you to spread the word about our mission on social media and encourage others to get involved."
             },
             {
                 q: "Is my donation tax-deductible?",
@@ -166,7 +191,7 @@
 
         let listItems = "";
         for (const item of content) {
-            listItems += "<li><h4 class='question'>" + item.q + "</h4><p>" + item.a + "</p></li>";
+            listItems += "<li><h4 class='question'>" + item.q + "<div class='plus-minus'>&#x2795;</div></h4><p>" + item.a + "</p></li>";
         }
         faqList.innerHTML += listItems;
 
@@ -174,7 +199,12 @@
         for (const q of questions) {
             q.addEventListener("click", function() {
                 this.classList.toggle("active");
-                let answer = this.nextElementSibling;
+
+                // change between + and - sign
+                const plusMinus = this.getElementsByClassName("plus-minus")[0];
+                plusMinus.innerHTML = (plusMinus.innerHTML == "➕") ? "&#10134;" : "&#x2795;";
+
+                const answer = this.nextElementSibling;
                 answer.style.display = (answer.style.display === "block") ? "none" : "block";
             });
             // inspired by: https://sweetcode.io/how-to-build-an-faq-page-with-html-and-javascript/
