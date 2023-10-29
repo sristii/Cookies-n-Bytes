@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cookies & Bytes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <style>
+            body{background: url(background1.jpg)}
+        </style>
+        <link rel="stylesheet" href="styles.css" type="text/css">        
+    </head>
+    <body>
+        <nav>
+            <span class="logo">LOGO</span>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-btn">About</a>
+                        <div class="dropdown-links">
+                            <a href="#">Our Mission</a>
+                            <a href="impact.html">Our Impact</a>
+                            <a href="team.html">Our Team</a>
+                        </div>
+                    </div> 
+                </li>
+                <li><a href="#">Cookies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <h1>Our Impact</h1>
+        <p>
+            Since our founding in 2020, here's what we've been able to accomplish.
+        </p>     
+        <div id="stats">     
+            <ul> 
+                <li><span class="numbers">10,000,000 </span>cookies sold</li>
+                <li><span class="numbers">4,000 </span>students set up with scholarships</li>
+                <li><span class="numbers">2,320</span> students receieved grants</li>
+                <li><span class="numbers">231</span> students currently in our afterschool tutoring program</li>
+                <li><span class="numbers">125</span> students currently in our STEM mentorship program</li>
+            </ul>
+        </div>
+        <div class="testimonials">
+            <h3>Testimonials:</h3>
+            <p>Take a look at what some of our past participants have to say about their time in the program!</p>
+                <div class="test-row1">
+                    <p>
+                        I am immensely thankful to Cookies & Bytes for their dedication to supporting 
+                        underrepresented individuals in STEM. The grant I received made a huge 
+                        difference, helping me pursue my research dreams in the STEM field without worrying 
+                        about financial constraints. Cookies & Bytes actively takes steps to make a 
+                        positive impact in the lives of aspiring STEM enthusiasts, and I am truly honored to be 
+                        a part of their community.
+                        <br><span>- Alvin Chipmunk</span>
+                    </p>
+            </div>
+            <br><br>
+            <div class="test-row2">
+                <p>
+                    Cookies & Bytes has played a pivotal role in shaping my STEM journey. As a participant in 
+                    their mentorship program, I can attest to the incredible impact they have had on my academic 
+                    success. My mentor have been invaluable in providing me guidance, helping me navigate a STEM education
+                    and answering all my questions at every turn. I am so grateful for the opportunities Cookies & Bytes 
+                    have provided me and the network of similar students I can now turn to.
+                    <br><span>- Jane Rabbit</span>
+                </p>
+            </div>
+            <br><br>
+            <div class="test-row1">
+                <p>
+                    My experience with the Cookies & Bytes afterschool tutoring program has been nothing 
+                    short of transformative. I attended the program every other day, and it made a profound 
+                    positive impact on me and my academics. The tutors were incredibly kind, patient, 
+                    and understanding. They really made sure I understood complex concepts, answered all my questions, 
+                    and helped me review anything I was struggling in both my high school math and science classes. 
+                    I am now pursuing a degree in astrophysics, something that I never thought could be possible for 
+                    me. 
+                    <br><span>- Jason Bunny</span>
+                </p>
+            </div>
+            <br>
+            <div class="test-row2">
+                <p>
+                    I'm currently attending Tufts University on a full scholarship thanks to the Cookies & Bytes
+                    Leader's Scholarship. It has truly lifted an incredible weight off my shoulders and I will 
+                    never find the words to express how much I appreciate it. I have been able to pursue my passions and research without any worries, and have been able to work with companies like 
+                    Apple and Facebook because of the time I've been able to purely dedicate to my studies. 
+                    Last but not least, I truly just love their cookies! 
+                    <br><span>- Alexa Hamster</span>
+                </p>
+            </div>
+            <br><br>
+        </div>
+        <script language="javascript">
+            $(document).ready(function(){
+                $(".numbers").hide(); 
+                $(".numbers").delay(400).fadeIn(5000);
+                $(".numbers").css("font-weight", "bolder");
+
+            });
+                
+        </script>
+    </body>
+</html>
