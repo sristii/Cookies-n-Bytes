@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Contact Us</title>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        body {
+            background-color: #efe6e0;
+        }
+        .banner {
+            display: block;
+            height: 290px;
+            background-image: url(backdrop2.jpeg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            overflow: hidden;
+        }
+        #banner-overlay {
+            margin: 0 auto;
+            background-color: #a873638c;
+            height: 200px;
+            padding-top: 140px;
+        }
+        h2 {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+            font-size: 34px;
+            text-align: center;
+            color: #efe6e0;
+        }
+        form {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+        form h4 {
+            text-align: center;
+            font-size: 24px;
+            color: #7b5946;
+        }
+		#error {
+            color: #b14444;
+            padding: 0px 0px 80px 0px;
+            text-align: center;
+            line-height: 1.4em;
+        }
+		label {
+            width: 140px; 
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 18px;
+            color: #7b5946;
+        }
+		input, select, textarea {
+            margin-bottom: 12px;
+            padding: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1px solid #b6b6b6;
+            width: 300px;
+            color: #5b5b5b;
+            font-family: 'Averia Serif Libre', serif;
+        }
+        textarea {
+            width: 300px;
+            height: 140px;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 30px;
+            margin-left: 160px;
+            text-align: center;
+            padding: 20px 0px;
+            background-color: #A87363;
+            color: #efe6e0;
+            font-size: 22px;
+            font-weight: 600;
+            font-family: 'Averia Serif Libre', serif;;
+            border-radius: 10px;
+        }        
+        input[type="submit"]:hover {
+            background-color: #caa296;
+            color: #7b5946;
+        }
+        input[type="checkbox"] {
+            width: fit-content;
+            height: fit-content;
+        }
+        .chkbox-label {
+            color: #5b5b5b;
+            margin-left: 10px;
+        }
+        .chkboxes-container {
+            display: block;
+            margin-left: 160px;
+        }
+        /* RESPONSIVE DESIGN - mobile */
+        @media screen and (max-width: 500px) {
+            input, select, textarea {
+                width: 240px;
+            }
+            h2 {
+                font-size: 30px;
+                width: 70%;
+            }
+        }
+    </style>
+    <script>
+        /*
+        If no phone number provided at all, nothing to validate. 
+        but if provided, ensure it is in one of the following formats: 
+        XXXXXXXXXX
+        XXX-XXX-XXXX
+        XXX.XXX.XXXX
+        XXX XXX XXXX
+        */
+        function validatePhone() {
+            const phone = document.getElementById("phone").value;
+            if (phone == "") {
+                return true;
+            } else {
+                return phone.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+            }
+        }
+
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            console.log(email);
+            return email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
+        }
+
+        function validate() {
+            reqFields = {
+                fname: "First Name",
+                lname: "Last Name",
+                email: "Email",
+                message: "Message",
+            };
+            let err = "";
+            for (const id in reqFields) {
+                if (document.getElementById(id).value == "") {
+                    err += reqFields[id] + " is required.<br />";
+                }
+            }
+
+            if (!validatePhone()) {
+                err += "Invalid phone number.<br />";
+            }
+            if (!validateEmail()) {
+                err += "Email format does not match <em>username@domain.tld</em><br />";
+            }
+
+            if (err != "") {
+                document.getElementById('error').innerHTML =
+                    "Fix the following errors to continue:<br><br>" + err;
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"></a>
+	    <ul>
+            <li><a href="index.html">Home</a></li>
+			<li>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-btn">About</a>
+                    <div class="dropdown-links">
+                        <a href="#">Our Mission</a>
+                        <a href="#">Our Impact</a>
+                        <a href="#">Our Team</a>
+                    </div>
+                </div> 
+            </li>
+            <li><a href="#">Cookies</a></li>
+			<li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+		</ul>
+	</nav>
+
+    <div class="banner">
+        <div id="banner-overlay"><h2>We'd love to hear from you!</h2></div>
+    </div>
+    <form onSubmit="return validate()" method="get" action="#"> <!-- action should be? -->
+        <h4>Get in touch with us </h4>
+        <label>First Name* </label><input type='text' name='first' id="fname" /><br />
+        <label>Last Name* </label><input type='text' name='last' id="lname" /><br />
+        <label>Email* </label><input type='text' name='email' id="email" /><br />
+        <label>Phone Number </label><input type='text' name='phone' id="phone" /><br />
+        <label>Role </label>
+        <div class="chkboxes-container">
+            <input type="checkbox" name="chkCustomer" value="customer" id="check-customer"><label for="check-customer" class="chkbox-label"> Customer</label><br />
+            <input type="checkbox" name="chkOrg" value="org" id="check-org"><label for="check-org" class="chkbox-label">  Organization</label><br />
+            <input type="checkbox" name="chkSponsor" value="sponsor" id="check-sponsor"><label for="check-sponsor" class="chkbox-label"> Sponsor</label><br />
+            <input type="checkbox" name="chkOther" value="other" id="check-other"><label for="check-other" class="chkbox-label"> Other</label><br />
+        </div><br />
+        <label>Type of Query</label>
+        <select name="query" id="queryType">
+            <option value=""></option>
+            <option value="donation">Donation/Fundraising</option>
+            <option value="opportunities">Volunteer Opportunities</option>
+            <option value="programs">Programs</option>
+            <option value="collab">Partnerships/Collaborations</option>
+            <option value="feedback">Product Feedback</option>
+            <option value="technical">Technical Issues</option>
+            <option value="other">Other</option>
+        </select><br />
+        <label>Message* </label><br/>
+        <label></label><textarea id="message"></textarea><br />
+        <input type="submit" value="Send Message"/>
+        <div id="error">&nbsp;</div>
+    </form>
+  
+    <!-- <footer>
+        
+    </footer> -->
+</body>
+</html>

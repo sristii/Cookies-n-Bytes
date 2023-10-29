@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>FAQs</title>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        h1 {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 40px;
+            color: #7b5946;
+        }
+        /* 
+         * styling for section before footer where users can navigate 
+         * to Contact page if their questions were not answers 
+         */
+        .link-contact {
+            display: block;
+            text-align: center;
+            background-color: #f2e9de;
+            padding: 30px;
+            font-size: 20px;
+        }
+        .link-contact p {
+            color: #7b5946;
+        }
+        .link-contact a {
+            color: #efe6e0;
+            display: inline-block;
+            background-color: #A87363;
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            width: 160px;
+        }
+        .link-contact a:hover {
+            background-color: #caa296;
+            color: #7b5946;
+        }
+        .faqs-container {
+            width: 70%;
+            margin: 0 auto;
+        }
+        #faq-list {
+            list-style-type: none;
+            padding-left: 0px;
+        }
+        /* question styling */
+        #faq-list li .question {
+            font-size: 22px;
+            color: #7b5946;
+            cursor: pointer;
+            padding: 20px;
+            display: block;
+            border-bottom: 2px solid #dab9b2;
+            transition: 0.4s;
+        }
+        /* answer styling */
+        #faq-list li p {
+            padding: 0px 20px 20px 20px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+            font-size: 18px;
+            line-height: 1.7em;
+            color: #7b5946;
+        }
+        b:before {
+            content: "🍪 ";
+            line-height: inherit;
+        }
+        .inline-link {
+            color: inherit;
+            background-color: #f2e9de;
+        }
+        .inline-link:hover {
+            background-color: #A87363;
+            color: #f2e9de;
+        }
+        /* styling for hovering over and clicking on a question */
+        .active, .question:hover {
+            background-color: #dab9b2;
+        }
+        .plus-minus {
+            font-size: 18px;
+            color: #7b5946; /* color doesn't work */
+            float: right;
+            margin-left: 5px;
+        }
+        /* RESPONSIVE DESIGN */
+        @media screen and (max-width: 1200px) {
+            .faqs-container {
+                width: 80%;
+            }
+        }
+        @media screen and (max-width: 1040px) {
+            .faqs-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"></a>
+	    <ul>
+            <li><a href="index.html">Home</a></li>
+			<li>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-btn">About</a>
+                    <div class="dropdown-links">
+                        <a href="#">Our Mission</a>
+                        <a href="#">Our Impact</a>
+                        <a href="#">Our Team</a>
+                    </div>
+                </div> 
+            </li>
+            <li><a href="#">Cookies</a></li>
+			<li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+		</ul>
+	</nav>
+
+    <h1>FAQs</h1>
+    <div class="faqs-container">
+        <ul id="faq-list"></ul>
+    </div>
+
+    <div class="link-contact">
+        <p>Questions not answered?</p>
+        <a href="contact.html">Contact Us ></a>
+    </div>
+  
+    <!-- <footer>
+    </footer> -->
+
+    <script>
+        const faqList = document.getElementById("faq-list");
+        
+        // fundraising strategies
+        const strategies = [
+            "<b>Custom Cookie Sales:</b> Selling custom cookies at events, conferences, and community gatherings.",
+            "<b>Corporate Partnerships:</b> Collaborating with businesses for custom cookie sales at events, with proceeds supporting STEM education.",
+            "<b>Online Charity Auctions:</b> Hosting auctions for exclusive, themed cookie sets, with proceeds dedicated to STEM education.",
+            "<b>Custom Cookie Gift Cards:</b> Offering gift cards for custom cookies, with a portion of sales contributing to STEM education."
+        ];
+        
+        const content = [
+            {
+                q: "What is the purpose of this organization?",
+                a: "Our nonprofit is dedicated to raising funds for STEM education initiatives in underprivileged communities. We achieve this by creating and selling cookies at various events and gatherings."
+            },
+            {
+                q: "What are some of the STEM education initiatives you support?",
+                a: "We support a range of initiatives, including providing scholarships, educational resources, mentorship programs, and hands-on STEM experiences to children in need."
+            },
+            {
+                q: "How are the proceeds from cookie sales used?",
+                a: "Proceeds from our cookie sales directly support our mission of providing access to quality STEM education resources, programs, and opportunities to children and youths in underserved areas."
+            },
+            {
+                q: "What are the organization's fundraising strategies?",
+                a: "Great question! We use a variety of fundraising methods including:<br /><br />" + strategies.join("<br />")
+            },
+            {
+                q: "How can I purchase cookies?",
+                a: "Custom cookies can be ordered through our website or at specified events and gatherings. To reserve an order right now, visit our <a href='#' class='inline-link'>Cookie Catalogue</a>."
+            },
+            {
+                q: "Can I request specific designs or themes for custom cookies?",
+                a: "Absolutely! We offer customization options for our cookies to suit your preferences and event themes. Contact us to discuss your specific design requirements."
+            },
+            {
+                q: "How can I support your cause?",
+                a: "We welcome volunteers to assist us during our events and cookie sales. Please <a href='contact.html' class='inline-link'>contact us</a> to learn more and sign up. Another way to support us is to make a donation directly through our website. Additionally, we would love for you to spread the word about our mission on social media and encourage others to get involved."
+            },
+            {
+                q: "Is my donation tax-deductible?",
+                a: "Yes, your donation to our nonprofit is tax-deductible to the extent allowed by law. Upon donation, we provide a receipt for your records."
+            },
+            {
+                q: "How can I stay updated on your organization's activities and events?",
+                a: "Subscribe to our newsletter and follow us on social media platforms!"
+            }
+        ]
+
+        let listItems = "";
+        for (const item of content) {
+            listItems += "<li><h4 class='question'>" + item.q + "<div class='plus-minus'>&#x2795;</div></h4><p>" + item.a + "</p></li>";
+        }
+        faqList.innerHTML += listItems;
+
+        let questions = document.getElementsByClassName("question");
+        for (const q of questions) {
+            q.addEventListener("click", function() {
+                this.classList.toggle("active");
+
+                // change between + and - sign
+                const plusMinus = this.getElementsByClassName("plus-minus")[0];
+                plusMinus.innerHTML = (plusMinus.innerHTML == "➕") ? "&#10134;" : "&#x2795;";
+
+                const answer = this.nextElementSibling;
+                answer.style.display = (answer.style.display === "block") ? "none" : "block";
+            });
+            // inspired by: https://sweetcode.io/how-to-build-an-faq-page-with-html-and-javascript/
+        }
+    </script>
+</body>
+</html>
