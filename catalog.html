@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Catalog</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+        form {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+        form h4 {
+            text-align: center;
+            font-size: 24px;
+            color: #7b5946;
+        }
+		#error {
+            color: #ff0000;
+            padding: 0px 40px;
+            text-align: center;
+            line-height: 1.4em;
+        }
+		label {
+            width: 140px; 
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 18px;
+            color: #7b5946;
+        }
+		input, select, textarea {
+            margin-bottom: 12px;
+            padding: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1px solid #b6b6b6;
+            width: 300px;
+            color: #5b5b5b;
+        }
+        textarea {
+            width: 300px;
+            height: 140px;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 30px;
+            margin-left: 160px;
+            text-align: center;
+            padding: 20px 0px;
+            background-color: #A87363;
+            color: #efe6e0;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 10px;
+            width: 50%;
+        }
+
+        .summary {
+            display: block;
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 14px;
+            background-color: #efe6e0;
+            color: #7b5946;
+            width: 90%;
+            height: max-content;
+            margin: 0 auto;
+            padding: 30px;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function display(cookieType, name, numCookies) {
+            idStr = cookieType + "_text";
+            document.getElementById(idStr).innerHTML = name + numCookies;
+        }
+        
+        function calcOrder(){
+            //storing ordered amounts of each cookie
+            numCCC = document.getElementsByName("CCC")[0].value;
+            numPBB = document.getElementsByName("PBB")[0].value;
+            numDCC = document.getElementsByName("DCC")[0].value;
+            numMWC = document.getElementsByName("MWC")[0].value;
+            numNB = document.getElementsByName("NB")[0].value;
+
+            //stores whether or not the ordered amounts are integers
+            boolCCC = Number.isInteger(parseInt(numCCC));
+            boolPBB = Number.isInteger(parseInt(numPBB));
+            boolDCC = Number.isInteger(parseInt(numDCC));
+            boolMWC = Number.isInteger(parseInt(numMWC));
+            boolNB = Number.isInteger(parseInt(numNB));
+
+            if(boolCCC || boolPBB || boolDCC || boolMWC || boolNB)
+            {
+                alert("Thank you for ordering, please check your summary below, We'll be in contact soon!");
+        
+                document.getElementById("summary").style.display = "block";
+                document.getElementById("orderSum").innerHTML = "Order Summary";
+                if(boolCCC)
+                    display("CCC", "Classic Chocolate Chip: ", numCCC);
+                if(boolPBB)
+                    display("PBB", "Peanut Butter Blossoms: ", numPBB);
+                if(boolDCC)
+                    display("DCC", "Double Chocolate Chip: ", numDCC);
+                if(boolMWC)
+                    display("MWC", "Matcha White Chocolate: ", numMWC);
+                if(boolNB)
+                    display("NB", "Nutella Bombs: ", numNB);
+            }
+            else{
+                alert("Please order valid amounts.");
+            }
+        }
+
+        function validatePhone() {
+            const phone = document.getElementById("phone").value;
+            if (phone == "") {
+                return true;
+            } else {
+                return phone.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+            }
+        }
+
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            console.log(email);
+            return email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
+        }
+
+        function validate() {
+            reqFields = {
+                fname: "First Name",
+                lname: "Last Name",
+                email: "Email",
+                message: "Message",
+            };
+            let err = "";
+            for (const id in reqFields) {
+                if (document.getElementById(id).value == "") {
+                    err += reqFields[id] + " is required.<br />";
+                }
+            }
+
+            if (!validatePhone()) {
+                err += "Invalid phone number.<br />";
+            }
+            if (!validateEmail()) {
+                err += "Email format does not match <em>username@domain.tld</em><br />";
+            }
+
+            if (err != "") {
+                document.getElementById('error').innerHTML =
+                    "Fix the following errors to continue:<br><br>" + err;
+                return false;
+            }
+            //if no errors, return the order summary
+            if (err == ""){
+                document.getElementById('error').innerHTML = "";
+                calcOrder();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+    <nav>
+        <span class="logo">LOGO</span>
+	    <ul>
+            <li><a href="index.html">Home</a></li>
+			<li>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-btn">About</a>
+                    <div class="dropdown-links">
+                        <a href="#">Our Mission</a>
+                        <a href="#">Our Impact</a>
+                        <a href="#">Our Team</a>
+                    </div>
+                </div> 
+            </li>
+            <li><a href="#">Cookies</a></li>
+			<li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+		</ul>
+	</nav>
+
+    <div id="catalog-backdrop"></div>
+    <div class="banner-text">
+        Cookie Catalog
+    </div>
+
+    <div class="preview">
+        <div class="preview-row">
+            <div class="preview-text">
+                <h3>Classic Chocolate Chip</h3>
+                <p>Our take on the classic chocolate chip cookie! We use two different kinds
+                    of chocolate chunks, milk and dark, to create the perfect balance of
+                    sweetness. A light sprinkliing of sea salt on top to finish it off.
+                    <br><br>Price: $24<br><br>
+                    Order Amount(dozen):
+                    <input type="text" name="CCC" placeholder=0>
+                </p>
+            </div>
+            <div class="img-placeholder"><img src="chocChip.jpg" style = "max-width:300px; max-height:300px; width:100%; height:auto;"></div>
+        </div>
+
+        <div class="preview-row">
+            <div class="img-placeholder"><img src="PBBlossom.jpg" style = "max-width:300px; max-height:300px; width:100%; height:auto;"></div>
+            <div class="preview-text">
+                <h3>Peanut Butter Blossoms</h3>
+                <p>These fun sized cookies are a perfect treat to brighten your day! A
+                    delicious peanut butter cookie base with a sweet Hershey's Kiss in
+                    the center to create the perfect combination.
+                    <br><br>Price: $18<br><br>
+                    Order Amount(dozen):
+                    <input type="text" name="PBB" placeholder=0>
+
+                </p>
+            </div>
+        </div>
+
+        <div class="preview-row">
+            <div class="preview-text">
+                <h3>Double Chocolate Chip</h3>
+                <p>The perfect cookie for any chocolate lover! Made with dark and
+                    milk chocolate to balance the sweetness and richness. Each bite
+                    will be full of choclate chips and chunks, with a light sprinkling
+                    of sea salt on top to enhance the flavor.
+                    <br><br>Price: $24<br><br>
+                    Order Amount(dozen):
+                    <input type="text" name="DCC" placeholder=0>
+                </p>
+            </div>
+            <div class="img-placeholder"><img src="doubleChoc.jpg" style = "max-width:300px; max-height:300px; width:100%; height:auto;"></div>
+        </div>
+
+        <div class="preview-row">
+            <div class="img-placeholder"><img src="matcha.jpg" style = "max-width:300px; max-height:300px; width:100%; height:auto;"></div>
+            <div class="preview-text">
+                <h3>Matcha and White Chocolate</h3>
+                <p>A unique and delicious flavor combination! A delicious
+                    chewy cookie with a rich matcha flavor. Add in some white
+                    chocolate chips for some sweetness and you have a perfect
+                    combination. Pair it with some tea and enjoy!
+                    <br><br>Price: $24<br><br>
+                    Order Amount(dozen):
+                    <input type="text" name="MWC" placeholder=0>
+                </p>
+            </div>
+        </div>
+
+        <div class="preview-row">
+            <div class="preview-text">
+                <h3>Nutella Bombs</h3>
+                <p>A fun surprise waiting inside! Our delicious and rich chocolate
+                    cookie base, resulting in a beautiful crisp yet chewy bite.
+                    Add in a Nutella filling to the center to make the perfect
+                    bite every time.
+                    <br><br>Price: $20<br><br>
+                    Order Amount(dozen):
+                    <input type="text" name="NB" placeholder=0>
+                </p>
+            </div>
+            <div class="img-placeholder"><img src="chocFilled.jpg" style = "max-width:300px; max-height:300px; width:100%; height:auto;"></div>
+        </div>
+    </div>
+
+
+    <div class="donate-text">
+        <p style="font-size: 30px">Reserve Today!</p>
+        <div>
+            <form onSubmit="return validate()" method="get">
+                <label>First Name* </label><input type='text' name='first' id="fname"/><br/>
+                <label>Last Name* </label><input type='text' name='last' id="lname"/><br/>
+                <label>Email* </label><input type='text' name='email' id="email"/><br/>
+                <label>Phone Number </label><input type='text' name='phone' id="phone" /><br/>
+                <label>Message* </label><br/>
+                <label></label><textarea id="message"></textarea><br />
+                <input type="submit" value="Order"/>
+                <div id="error">&nbsp;</div>
+            </form>
+        </div>
+    </div>
+
+    <div class="summary" id="summary" style = "display: none">
+        <h2 id="orderSum"></h2>
+        <p id="CCC_text"></p>
+        <p id="PBB_text"></p>
+        <p id="DCC_text"></p>
+        <p id="MWC_text"></p>
+        <p id="NB_text"></p>
+    </div>
+</body>
+
+</html>
