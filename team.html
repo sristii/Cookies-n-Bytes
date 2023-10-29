@@ -6,39 +6,49 @@
         <title>Cookies & Bytes</title>
         <link rel="stylesheet" href="styles.css" type="text/css">   
         <style>
-            body{background: url(background2.jpg)}
+            body{
+                background: url(images/background2.jpeg);
+                height: 100%;
+                width: 100%;
+                padding: 0px; 
+                margin: 0px; 
+                font-family: 'Averia Serif Libre', serif;
+                color: #7b5946; 
+            }
         </style>
     </head>
     <body>
         <nav>
-            <span class="logo">LOGO</span>
+            <a href="index.html" class="logo"></a>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-btn">About</a>
-                        <div class="dropdown-links">
-                            <a href="#">Our Mission</a>
-                            <a href="impact.html">Our Impact</a>
-                            <a href="team.html">Our Team</a>
-                        </div>
-                    </div> 
-                </li>
-                <li><a href="#">Cookies</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-btn">About</a>
+                    <div class="dropdown-links">
+                        <a href="mission.html">Our Mission</a>
+                        <a href="impact.html">Our Impact</a>
+                        <a href="team.html">Our Team</a>
+                    </div>
+                </div> 
+            </li>
+            <li><a href="catalog.html">Cookies</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="faq.html">FAQs</a></li>
+            <li><a href="faq.html">FAQs</a></li>
             </ul>
         </nav>
-        <h1>Our Team</h1>
-        <p>Here at Cookies & Bytes, we are proud to be a completely female-run small
-            business. Learn more about our incredible team below: 
-        </p>     
+        <div class="banner-text">
+            <h1>Our Team</h1>
+        </div>    
         <div class="bios"> 
-            <h3>Our Founder and Chair of Philanthropy, Sristi Panchu</h3>
+            <p>Here at Cookies & Bytes, we are proud to be a completely female-run small
+                business. Learn more about our incredible team below: 
+            </p> 
+            <h2 class="sub-heading">Our Founder and Chair of Philanthropy, Sam Levine</h2>
             <div class="bio">
-                <img class="photos" src="test.jpg" > 
-                <p>
-                    A Harvard grad from humble beginnings, Sristi started her career 
+                <img class="photos" src="images/sam.jpeg" > 
+                <p class ="sub-text">
+                    A Harvard grad from humble beginnings, Sam started her career 
                     as an engineer for the powerhouse consulting firm Consulting & Consultants. 
                     However, she found her dissatisfied with the lack of diversity both throughout her 
                     educational journey and in her corporate line of work, but wasn't sure what 
@@ -50,44 +60,44 @@
                     she decided to leave her full-time job and pursue her new passion. She vowed 
                     to use her growing platform for good, donating a part of her proceeds to help 
                     underrepresented groups in STEM starting from her very first sale.  <br><br>
-                    Today, Sristi is still heavily involved in the company's daily activities and 
+                    Today, Sam is still heavily involved in the company's daily activities and 
                     leads our philanthrophic efforts. 
                 </p>
             </div>
-            <h3>Our CEO, Joanne Fan</h3>
+            <h2 class="sub-heading">Our CEO, Jane Fatilli</h2>
             <div class="bio">
-                <p>
-                    Joining us as CEO earlier this year, Joanne has been a long standing and outspoken 
+                <p class ="sub-text">
+                    Joining us as CEO earlier this year, Jane has been a long standing and outspoken 
                     champion for equity in STEM. Since taking the helm in June, she has already 
                     kicked off several new initiatives and projects aimed at furthering our mission.  
                     <br><br>
-                    Prior to Cookies & Bytes, Joanne served as the CEO for companies such as Sodas & Software
+                    Prior to Cookies & Bytes, Jane served as the CEO for companies such as Sodas & Software
                     and Hamburgers & Hardware. She has an impressive track record as a respected, 
-                    results-driven executive leader. Joanne's vision for the company includes innovation and 
-                    international growth, all the while working closely with Sristi to ensure our continued 
+                    results-driven executive leader. Jane's vision for the company includes innovation and 
+                    international growth, all the while working closely with Sam to ensure our continued 
                     commitment to funding and promoting STEM education and accessibility. 
                 </p>
-                <img class="photos" src="test.jpg" > 
+                <img class="photos" src="images/jane.jpeg" > 
             </div>
-            <h3>Our CTO, Shannon Tang</h3>
+            <h2 class="sub-heading">Our CTO, Sarah Tam</h2>
             <div class="bio">
-                <img class="photos" src="test.jpg" > 
-                <p>
-                    Shannon has been with the company since its inception, helping Sristi set up 
+                <img class="photos" src="images/sarah.jpeg" > 
+                <p class ="sub-text">
+                    Sarah has been with the company since its inception, helping Sam set up 
                     the original website to ensure orders could be placed quickly and smoothly. 
                     <br><br>
-                    Since then, Shannon has overseen everything from the website to the order 
+                    Since then, Sarah has overseen everything from the website to the order 
                     supply chain management system connecting our kitchens to our delivery drivers. Prior 
-                    to Cookies & Bytes, Shannon was Vice President of Development at Brownies & 
+                    to Cookies & Bytes, Sarah was Vice President of Development at Brownies & 
                     Bitcoin, where she led both the design and product teams. She plans to leverage her 
                     technical background to make the Cookies & Bytes experience as seamless as possible for 
                     everyone. 
                 </p>
             </div>
-            <h3>Our CFO, Lillian Tran</h3>
+            <h2 class="sub-heading">Our CFO, Laura Craft</h2>
             <div class="bio">
-                <p>
-                    Lillian joined Cookies & Bytes in early 2021 as an accountant. She has served as 
+                <p class ="sub-text">
+                    Laura joined Cookies & Bytes in early 2021 as an accountant. She has served as 
                     the interim Chief-Finance Officer since December of 2022, and was officially 
                     appointed to the role last month. 
                 <br><br>
@@ -96,20 +106,26 @@
                     new scholarships and grants for young people in STEM. In her personal time, she 
                     also runs a free STEM tutoring summer camp. 
                 </p>
-                <img class="photos" src="test.jpg" > 
-            </div>
-            <h3>Our Head Chef, Cookie Monster</h3>
-            <div class="bio">
-                <img class="photos" src="test.jpg" > 
-                <p>
-                   Cookie Monster loveeee cookie. Cookie Monster know how to 
-                   make best cookie and make Sristi's recipe even bester. 
-                   Cookie Monster make sure Cookie & Bytes always has best cookie ever.
-                   <br><br> 
-                </p>
-               
+                <img class="photos" src="images/laura.jpeg" > 
             </div>
             <br><br>
         </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="info">
+                    <h3>Stop by for a quick byte!</h3>
+                    <p>✧ 2121 Cherry Road, Brooklyn NY 11293</p>
+                    <p>✧ Located near Owl's Head Park~</p>
+                    <a href="https://www.facebook.com/" class="fab fa-facebook">@cookiesnbytes</a>
+                </div>
+                <div class="hours">
+                    <h3>Our Hours Of Operation:</h3>
+                    <p>✧ Monday - Friday: 8:00 AM - 6:00 PM</p>
+                    <p>✧ Saturday - Sunday: 9:00 AM - 5:00 PM</p>
+                    <p>✧ Holidays: Closed</p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
