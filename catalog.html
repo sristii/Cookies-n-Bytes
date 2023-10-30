@@ -59,10 +59,15 @@
             padding: 20px 0px;
             background-color: #A87363;
             color: #efe6e0;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
+            font-family: 'Averia Serif Libre', serif;;
             border-radius: 10px;
-            width: 50%;
+        }        
+
+        input[type="submit"]:hover {
+            background-color: #caa296;
+            color: #7b5946;
         }
 
         .summary {
@@ -80,12 +85,6 @@
             text-align: center;
         }
 
-        input[type="submit"]:hover {
-            background-color: #caa296;
-            color: #7b5946;
-        }
-
-
         #catalog-backdrop {
             display: block;
             position: fixed;
@@ -99,11 +98,21 @@
         
     </style>
     <script>
+         /*
+            * name: display
+            * parameters: string cookie type, string full cookie name, int number of cookies ordered 
+            * purpose: displays all the cookies in final total using HTML 
+        */
         function display(cookieType, name, numCookies) {
             idStr = cookieType + "_text";
             document.getElementById(idStr).innerHTML = name + numCookies;
         }
         
+        /*
+            * name: calcOrder
+            * parameters: none 
+            * purpose: prepares order summary of each cookie
+        */
         function calcOrder(){
             //storing ordered amounts of each cookie
             numCCC = document.getElementsByName("CCC")[0].value;
@@ -118,7 +127,8 @@
             boolDCC = Number.isInteger(parseInt(numDCC));
             boolMWC = Number.isInteger(parseInt(numMWC));
             boolNB = Number.isInteger(parseInt(numNB));
-
+            
+            // conditionally displays amount of each cookie ordered 
             if(boolCCC || boolPBB || boolDCC || boolMWC || boolNB)
             {
                 alert("Thank you for ordering, please check your summary below. We'll be in contact soon!");
@@ -141,6 +151,11 @@
             }
         }
 
+        /*
+            * name: validatePhone
+            * parameters: none 
+            * purpose: provides phone number validation
+        */
         function validatePhone() {
             const phone = document.getElementById("phone").value;
             if (phone == "") {
@@ -150,12 +165,22 @@
             }
         }
 
+        /*
+            * name: validateEmail
+            * parameters: none 
+            * purpose: validates all required fields and displays result
+        */
         function validateEmail() {
             const email = document.getElementById("email").value;
             console.log(email);
             return email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
         }
 
+        /*
+            * name: validate
+            * parameters: none 
+            * purpose: provides email validation
+        */
         function validate() {
             reqFields = {
                 fname: "First Name",
@@ -306,7 +331,7 @@
                 <label>Phone Number </label><input type='text' name='phone' id="phone" /><br/>
                 <label>Message* </label><br/>
                 <label></label><textarea id="message"></textarea><br />
-                <input type="submit" value="Order"/>
+                <input type="submit" value="Order Now"/>
                 <div id="error">&nbsp;</div>
             </form>
         </div>
