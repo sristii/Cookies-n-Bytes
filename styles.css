@@ -233,6 +233,7 @@ a {
     .footer-content {
         display: flex;
         margin: 10px;
+        margin-bottom: 0;
     }
 
     .info {
