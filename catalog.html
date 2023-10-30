@@ -32,6 +32,7 @@
             display: inline-block;
             margin-left: 20px;
             font-size: 18px;
+            text-align: left;
             color: #7b5946;
         }
 
@@ -44,6 +45,7 @@
             border: 1px solid #b6b6b6;
             width: 300px;
             color: #5b5b5b;
+            font-family: 'Averia Serif Libre', serif;
         }
 
         textarea {
@@ -54,7 +56,7 @@
         input[type="submit"] {
             display: block;
             margin: 30px;
-            margin-left: 160px;
+            margin-left: 230px;
             text-align: center;
             padding: 20px 0px;
             background-color: #A87363;
@@ -94,8 +96,21 @@
             background-image: url('images/backgroundCatalog.jpg');
             background-size: cover;
         }
-    
-        
+        @media screen and (max-width: 500px) {
+            input, select, textarea {
+                width: 240px;
+            }
+            h2 {
+                font-size: 30px;
+                width: 70%;
+            }
+        }
+        @media screen and (max-width: 700px) {
+            input[type='submit'] {
+                margin: 0 auto;
+                margin-left: 100;
+            }
+        }
     </style>
     <script>
          /*
@@ -329,7 +344,7 @@
                 <label>Last Name* </label><input type='text' name='last' id="lname"/><br/>
                 <label>Email* </label><input type='text' name='email' id="email"/><br/>
                 <label>Phone Number </label><input type='text' name='phone' id="phone" /><br/>
-                <label>Message* </label><br/>
+                <label style="padding-right: 300px;">Message* </label><br/>
                 <label></label><textarea id="message"></textarea><br />
                 <input type="submit" value="Order Now"/>
                 <div id="error">&nbsp;</div>
