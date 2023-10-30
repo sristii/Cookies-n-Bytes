@@ -159,7 +159,6 @@ a {
     line-height: 1.7em;
 }
 .img-placeholder {
-    background-color: bisque;
     box-sizing: border-box;
     width: 300px;
     height: 300px;
@@ -171,7 +170,7 @@ a {
     width: 90px;
     height: 80px;
     background-size: 100%;
-    background-image: url("cookie-button.png");
+    background-image: url("images/cookie-button.png");
     background-repeat: no-repeat;
     margin: 0 auto;
     margin-bottom: 40px;
@@ -220,8 +219,6 @@ a {
     color: #7b5946;
 }
 /* home page styling ends here */
-
-
 
 /* Footer styling */
     footer {
@@ -281,13 +278,10 @@ a {
         margin-bottom: 40px;
         margin-top: 100px;
         padding: 10px 30px 30px 30px;
-        /* align-items: center; 
-        justify-content: center;  */
     }
     
     .bio{
         margin: 5px 0px;
-        /* background-color: red;  */
         box-sizing: border-box;
         display: flex;
         flex-wrap: nowrap;
@@ -335,7 +329,6 @@ a {
         padding-right: 5%;
         background-color: #dab9b2;
         border-radius: 14px;
-    
     }
     
     .test-row2 {
@@ -370,6 +363,11 @@ a {
     }
 }
 /* mobile */
+@media screen and (max-width: 860px) {
+    nav ul li a {
+        width: 110px;
+    }
+}
 @media screen and (max-width: 768px) {
     .preview-row, .test-row1, .test-row2, .bio {
         flex-wrap: wrap;
@@ -385,9 +383,20 @@ a {
     .preview-text p {
         font-size: 18px;
     }
+    nav ul {
+        width: 300px;
+    }
+    .logo {
+        width: 150px;
+    }
 }
 @media screen and (max-width: 480px) {
     .preview-text{
         width: 98%;
+    }
+    nav ul {
+        float: none;
+        display: inline-block;
+        margin-left: 140px;
     }
 }
